@@ -6,6 +6,9 @@ const urlsToCache = [
     'https://jxuisjzu213.github.io/tst/tst/index.html',
     'https://jxuisjzu213.github.io/tst/tst/app.js',
     'https://jxuisjzu213.github.io/tst/tst/service-worker.js'
+    'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'
+'https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js'
+'https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css'
 ];
 
 // أثناء تثبيت الـ Service Worker، نقوم بتخزين الملفات في الـ Cache
