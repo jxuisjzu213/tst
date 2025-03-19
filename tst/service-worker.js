@@ -1,4 +1,6 @@
 const CACHE_NAME = 'offline-cache-v1';
+
+// قائمة بالملفات التي سيتم تخزينها في الـ Cache
 const urlsToCache = [
     '/',
     '/index.html',
@@ -12,7 +14,10 @@ self.addEventListener('install', (event) => {
         caches.open(CACHE_NAME)
         .then((cache) => {
             console.log('Caching files');
-            return cache.addAll(urlsToCache);
+            return cache.addAll(urlsToCache); // إضافة الملفات المحددة في urlsToCache
+        })
+        .catch((error) => {
+            console.log('Error caching files during install:', error); // التعامل مع الأخطاء
         })
     );
 });
@@ -26,6 +31,9 @@ self.addEventListener('fetch', (event) => {
                 return cachedResponse; // إذا كان الملف موجودًا في الـ Cache، قم بإرجاعه
             }
             return fetch(event.request); // إذا كان المتصفح متصلاً بالإنترنت، قم بالبحث عن الملف عبر الإنترنت
+        })
+        .catch((error) => {
+            console.log('Error during fetch event:', error); // التعامل مع الأخطاء
         })
     );
 });
