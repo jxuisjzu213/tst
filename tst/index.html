@@ -1,108 +1,116 @@
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="robots" content="noindex, nofollow">
-    <title>Facebook Posts</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
- <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #f0f2f5;
-        }
-        .container {
-            text-align: center;
-            background: white;
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-        .post-box {
-            width: 100%;
-            min-height: 100px;
-            padding: 15px;
-            border-radius: 15px;
-            background: #f8f9fa;
-            text-align: center;
-            font-size: 18px;
-            font-weight: bold;
-            color: #333;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 15px;
-        }
-        .btn-container {
-            display: flex;
-            justify-content: space-between;
-        }
-        .btn {
-            width: 48%;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <!-- صندوق المنشور -->
-        <div id="postBox" class="post-box">جارٍ تحميل المنشورات...</div>
+<!DOCTYPE html>
+ <html lang="ar">
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>موقع يعمل بدون إنترنت</title>
+     <meta charset="utf-8">
+     <meta name="robots" content="noindex, nofollow">
+     <title>Facebook Posts</title>
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+         <link rel="stylesheet" href="styles.css">
 
-        <!-- أزرار التنقل بين المنشورات -->
-        <div class="btn-container">
-            <button id="prevPost" class="btn btn-secondary">⬅ المنشور السابق</button>
-            <button id="nextPost" class="btn btn-primary">➡ المنشور التالي</button>
-        </div>
-    </div>
-
-    <script>
-        var accesstoken = `EAAT1GyZACCpcBO7RTAUk1iPjxkItfDk8jF13zwg7FMSEUjQq9N0f9ZCsevQg1dsZAHHZCrNMgt5KVqFAFZC3MelCE0jXaaNDt8plyeoDTejTZCyakwDlzyLg8PzcFkt6UH79xuICCtsxsCTI7cAhUx0fuuw8fFpFIKECYmmOt2lS6BfxC7joel0wIuBdoyBFPpGAzdnFnbFCl7UFmrsNdmvUDo`;
-        var pageid = `636020372918318`;
-        var posts = [];
-        var currentIndex = 0;
-
-        // جلب المنشورات من فيسبوك
-        function fetchPosts() {
-            fetch(`https://graph.facebook.com/v12.0/${pageid}?fields=posts{message}&access_token=${accesstoken}`)
-            .then(response => response.json())
-            .then(data => {
-                posts = data.posts.data.filter(post => post.message); // تصفية المنشورات التي تحتوي على نص فقط
-                if (posts.length > 0) {
-                    currentIndex = 0;
-                    showPost();
-                } else {
-                    document.getElementById('postBox').innerText = "لا يوجد منشورات متاحة!";
-                }
-            });
-        }
-
-        // عرض المنشور الحالي
-        function showPost() {
-            document.getElementById('postBox').innerText = posts[currentIndex].message;
-        }
-
-        // زر المنشور السابق
-        document.getElementById("prevPost").addEventListener("click", function() {
-            if (posts.length > 0) {
-                currentIndex = (currentIndex - 1 + posts.length) % posts.length; // التكرار داخل القائمة
-                showPost();
-            }
-        });
-
-        // زر المنشور التالي
-        document.getElementById("nextPost").addEventListener("click", function() {
-            if (posts.length > 0) {
-                currentIndex = (currentIndex + 1) % posts.length;
-                showPost();
-            }
-        });
-
-        // تحميل المنشورات عند فتح الصفحة
-        fetchPosts();
-    </script>
-    <script src="app.js"></script>
-</body>
-</html>
+     <style>
+         body {
+             display: flex;
+             justify-content: center;
+             align-items: center;
+             height: 100vh;
+             background-color: #f0f2f5;
+         }
+         .container {
+             text-align: center;
+             background: white;
+             padding: 20px;
+             border-radius: 15px;
+             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+         }
+         .post-box {
+             width: 100%;
+             min-height: 100px;
+             padding: 15px;
+             border-radius: 15px;
+             background: #f8f9fa;
+             text-align: center;
+             font-size: 18px;
+             font-weight: bold;
+             color: #333;
+             display: flex;
+             align-items: center;
+             justify-content: center;
+             margin-bottom: 15px;
+         }
+         .btn-container {
+             display: flex;
+             justify-content: space-between;
+         }
+         .btn {
+             width: 48%;
+         }
+     </style>
+ </head>
+ <body>
+    
+     <div class="container">
+         <!-- صندوق المنشور -->
+         <div id="postBox" class="post-box">جارٍ تحميل المنشورات</div>
+ 
+         <!-- أزرار التنقل بين المنشورات -->
+         <div class="btn-container">
+             <button id="prevPost" class="btn btn-secondary">⬅ </button>
+             <button id="nextPost" class="btn btn-primary">➡ </button>
+         </div>
+     </div>
+ 
+     <script>
+         var accesstoken = `EAAT1GyZACCpcBO7g83KpovesyQNKtZBAgPHWadrwqNUItfhMXbxpeFMjVGOZCZCmjFRn52TbxFbbc1BYZAjNABb98vEZA1ZA4VHoA1JNmsKBJYhWAw8xdhRMNkc7n68I8y360XodhKX0k7Cyr327ZAnLdtsYOk532v6tiVzCXaSEkBfb8hSAIZCVGKqakHTEm4r5t`;
+         var pageid = `636020372918318`;
+         var posts = [];
+         var currentIndex = 0;
+ 
+         // جلب المنشورات من فيسبوك
+         function fetchPosts() {
+             fetch(`https://graph.facebook.com/v12.0/${pageid}?fields=posts{message}&access_token=${accesstoken}`)
+             .then(response => response.json())
+             .then(data => {
+                 posts = data.posts.data.filter(post => post.message); // تصفية المنشورات التي تحتوي على نص فقط
+                 if (posts.length > 0) {
+                     currentIndex = 0;
+                     showPost();
+                 } else {
+                     document.getElementById('postBox').innerText = "لا يوجد منشورات متاحة!";
+                 }
+             });
+         }
+ 
+         // عرض المنشور الحالي
+         function showPost() {
+             document.getElementById('postBox').innerText = posts[currentIndex].message;
+         }
+ 
+         // زر المنشور السابق
+         document.getElementById("prevPost").addEventListener("click", function() {
+             if (posts.length > 0) {
+                 currentIndex = (currentIndex - 1 + posts.length) % posts.length; // التكرار داخل القائمة
+                 showPost();
+             }
+         });
+ 
+         // زر المنشور التالي
+         document.getElementById("nextPost").addEventListener("click", function() {
+             if (posts.length > 0) {
+                 currentIndex = (currentIndex + 1) % posts.length;
+                 showPost();
+             }
+         });
+ 
+         // تحميل المنشورات عند فتح الصفحة
+         fetchPosts();
+     </script>
+     <script src="app.js"></script>
+ </body>
+ </html>
