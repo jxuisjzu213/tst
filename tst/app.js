@@ -1,10 +1,14 @@
-// Check if service workers are supported in the browser
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('service-worker.js')
-  .then((registration) => {
-      console.log('Service Worker registered with scope:', registration.scope);
-  })
-  .catch((error) => {
-      console.log('Service Worker registration failed:', error);
-  });
-}
+self.addEventListener('fetch', (event) => {
+    event.respondWith(
+        caches.match(event.request)
+        .then((cachedResponse) => {
+            if (cachedResponse) {
+                return cachedResponse;  // إرجاع البيانات من الـ Cache إذا كانت موجودة
+            }
+            // إذا لم يتم العثور على البيانات في الـ Cache، حاول جلبها من الشبكة
+            return fetch(event.request).catch((error) => {
+                console.log('Network request failed and no cached data available:', error);
+            });
+        })
+    );
+});
