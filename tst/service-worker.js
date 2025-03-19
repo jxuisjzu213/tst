@@ -3,9 +3,9 @@ const CACHE_NAME = 'offline-cache-v1';
 // قائمة بالملفات التي سيتم تخزينها في الـ Cache
 const urlsToCache = [
     '/',
-    '/index.html',
-    '/styles.css',
-    '/app.js'
+    'tst/index.html',
+    'tst/styles.css',
+    'tst/app.js'
 ];
 
 // أثناء تثبيت الـ Service Worker، نقوم بتخزين الملفات في الـ Cache
