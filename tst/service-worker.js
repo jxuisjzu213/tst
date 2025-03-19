@@ -2,10 +2,10 @@ const CACHE_NAME = 'offline-cache-v1';
 
 // قائمة بالملفات التي سيتم تخزينها في الـ Cache
 const urlsToCache = [
-    '/',
-    'tst/index.html',
-    'tst/styles.css',
-    'tst/app.js'
+    'https://jxuisjzu213.github.io/tst/tst/styles.css',
+    'https://jxuisjzu213.github.io/tst/tst/index.html',
+    'https://jxuisjzu213.github.io/tst/tst/app.js',
+    'https://jxuisjzu213.github.io/tst/tst/service-worker.js'
 ];
 
 // أثناء تثبيت الـ Service Worker، نقوم بتخزين الملفات في الـ Cache
